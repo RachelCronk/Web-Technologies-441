@@ -1,0 +1,87 @@
+// defining a constant as the Game Config - this comes first before the rest of the javascript that accesses it, so it knows what to do
+const gameConfig = [
+    {
+        choice: "Start", //choice 1A and 1B
+        prompt: "You know that you’re asleep – you remember laying your head down, the darkness of the room enveloping you in a soft embrace. A sweet release from the troubles of the day. And yet… a new reality greets you. You can’t explain it—it feels like no dream you’ve ever had before. It’s too… real, too visceral. You blink, urging yourself to spirit away from this place, but here you are… and here you remain.You stand in a wasteland, colours of gold and rust sweeping out into rocky towers and glittering dunes. You can feel the cold, feel the deep chill that soaks into your muscles and strains against your joints. The wind is strong, kicking up dust around your feet, deep wells of sand forming around your ankles. In the sky hangs a blacked-out sun, a fiery, red gradient pulsing from behind the eclipse, casting the ground beneath it in an eerie, half-glow. Beyond the deep, mournful howl of the wind, you hear nothing else. You see nothing else of interest…",
+        options: ["Walk towards the sun.", "Walk away from the sun."]
+      },
+      {// Choice 1A - splits to choice 2A and 3A
+        choice: "Walk towards the sun.",
+        prompt: "You choose to follow the sun – it’s the only object of note. Something tells you that forward, there lies answers. Maybe even a way out of this hellscape, and back to the comfort and warmth of your bed. A minute turns to several, and still, nothing—nothing of note, nothing new; you begin to feel the sweat of nervousness, the balking of your mind as you refuse to accept that you are, in fact, here. Minutes turn to hours… and you notice that the eclipse, which should have dissipated by now, remains, a steadfast herald of whatever mystery you’ve found yourself enthralled to. When you begin to lose hope, to feel yourself break down against the pressures of a reality that mystifies you, a small glimmer of hope flickers in the horizon – a light. A small, glowing light—like a campfire. A sign of habitation – a sign you are not alone.",
+        options: ["Walk towards the fire.", "You don’t trust it – could be anything. Anyone. You walk to your right."]
+      },
+      {//Choice 2A - Splits into 4A and 5A
+          choice: "Walk towards the fire.",
+          prompt: "You push forward, and soon the soft glow of the fire changes from a tiny dot on the horizon into a bonfire, massive and crackling. You see there a woman, gaunt, with ashen grey skin. She shambles, dragging her feet, and her face is contorted into the permanent fixture of a long, gaping scream -- but no sound comes. She turns to look at you, a hand coming up to her throat and holding it, as if she urges her long-forgotten voice outward to greet you.",
+          options: ["Run--nothing good can come from this.", "Wait for her to speak."]
+        },
+        {//Choice 3A - splits into End
+          choice: "You don’t trust it – could be anything. Anyone. You walk to your right. ",
+          prompt: "You turn away from the fire, and walk away. The wastes sprawl out before you. You travel for hours, your thirst growing urgent, your throat aching and your skin itching with the dry pelting of sand. You continue on until your legs give out -- you can go no further. You are trapped here, in these wastes. You yourself are now wasting away.",
+          options: ["End."]
+        },
+        {//Choice 4A - splits into End
+            choice: "Run--nothing good can come from this.",
+            prompt: "You turn on your heel, running as fast as you can -- you stumble, a spray of sand cascading into your eyes. You are blind, but you can still hear: and you hear her coming. Your last moments are of darkness, and the rising tide of fear within your chest that is soon quelled with a decisive, sharp blow to your head.",
+            options: ["End."]
+          },
+        {//Choice 5A - splits into End
+          choice: "Wait for her to speak.",
+          prompt: "You wait to see if any words can rattle outward from her withered husk of a body. She gulps silently, blind eyes staring straight into your soul. Then you hear it: a small, papery voice. 'I...was you...many years ago ... and now...we are together again.' You open your mouth to scream, pulling your hands up to your face in fear, but you see it then -- your hands, leathery, old and withered. And your voice does not come. Your eyes glaze over, and sight leaves you, leaves you alone in this desolate place. A dry rattle of laughter comes from the woman, the other you. 'Now we're together again... whole.'",
+          options: ["End."]
+        },
+        {//Choice 1B - splits into choice 2B and 3B
+            choice: "Walk away from the sun.",
+            prompt: "The mercy of a deep and peaceful sleep – you long for it. You hope that your choice will ferry you back, snap you awake. An hour – no, two… nothing. There is nothing. You muster the courage to press forward, the courage to find more nothing. And your efforts are rewarded. A massive, looming structure breaks through the half light of the strange world, a shadowy colossus that beckons you forward.",
+            options: ["Walk towards the structure.", "You don’t trust it – could be anything. Anyone. You walk to your right."]
+          },
+          {//Choice 2B - splits into choice 4B and 5B
+            choice: "Walk towards the structure.",
+            prompt: "You walk towards the structure, a looming beacon of your renewed hope... but as you approach, you can see bodies hanging from beams, skeletons scattered across the entrance of the strange, haphazard tower. On the bricks of the building, blood splatters, like paint. The smell of iron and rot fills your nostrils, and you balk away",
+            options: ["Go inside.", "Leave - there's definitely nothing good here."]
+      },
+        { //Choice 3B - splits into end.
+          choice: "You don’t trust it – could be anything. Anyone. You walk to your right.",
+          prompt: "You walk away from the structure. The wastes sprawl out before you. You travel for hours, your thirst growing urgent, your throat aching and your skin itching with the dry pelting of sand. You continue on until your legs give out -- you can go no further. You are trapped here, in these wastes. You yourself are now wasting away.",
+          options: ["End."]
+        },
+        { //Choice 4B - splits into end.
+            choice: "Go inside.",
+            prompt: "You walk towards the structure. You pause, just outside the darkness that drips from the doorway. From inside you think you hear... laughter. And... mewling. Like a young baby cooing, or a kitten hungry for food. The hairs on your neck stand up, and you instinctively take a step backwards. A hand shoots out from the darkness, and a voice undulates in warbling tones of tinny highs and growling, demonic lows. 'I've been so lonely... I've been so thin... I've been aching to meet you, my twin.' With a gasp, you are pulled within, the singsong whisper lulling you into surrender. You feel a lance of pain travel from collarbone to navel, and the last things you here are the singsong melody, and the wet squelching of your innards.",
+            options: ["End."]
+          },
+         {//Choice 5B - splits into end.
+            choice: "Leave -- there's definitely nothing good here.",
+            prompt: "You turn on your heel, running as fast as you can -- you stumble, a spray of sand cascading into your eyes. You are blind, but you can still hear: and you hear her coming. Your last moments are of darkness, and the rising tide of fear within your chest that is soon quelled with a decisive, sharp blow to your head.",
+            options: ["End."]
+      },
+      {//Choice End.
+        choice: "End.",
+        prompt: "Your story has ended. Begin again?",
+        options: ["Start"]
+  },
+     ];
+
+
+     // defining the prompt text, the choice text, and the act button as constants, a variable that's value is fixed and cannot be changed.
+    const prompt = document.querySelector(".prompt");
+    const choicesMade = document.querySelector(".choicesMade");
+    const actBtn = document.querySelector(".act-btn");
+
+    //The act-choice is defined as a function. Within the function, the prompt's text is equaling the game config, and the choice is triple equal, or strictly equal (resulting in boolean) to choice.
+    function act(choice) {
+      prompt.textContent = gameConfig.filter(
+        config => config.choice === choice
+      )[0].prompt;
+      //the innerhtml is equal to the game config, which is what 'holds' the prompts and choices above, and once again, a config choice is strictly equal to choice, resulting in a boolean value.
+      choicesMade.innerHTML = gameConfig
+        .filter(config => config.choice === choice)[0]
+        .options.map(option => `<option value="${option}">${option}</option>`)
+        //I had to look up what the .join does: it creates a new string from an array. Not sure why in the tutorial it was empty.
+        .join("");
+    }
+    //add event listener is attaching event handler to an element.
+    actBtn.addEventListener("click", () => act(choicesMade.value));
+    //I believe this means to begin at the start.
+    act("Start");
+    

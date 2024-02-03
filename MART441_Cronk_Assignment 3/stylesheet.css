@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+    
+    
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("images/paper.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    background-color: rgb(165, 112, 63);
+    font-family: 'MerchantLedgerRough.ttf', serif;
+    
+}
+
+.container {
+    width: 800px;
+    max-width: 80%;
+    background-color: antiquewhite;
+    padding: 10px;
+    border-radius: 25px;
+    box-shadow: 0 0 10px 2px;
+}
+
+@font-face {
+    font-family: 'Kingvoon';
+    src: url(fonts\Kingvoon.ttf) format('ttf');
+}
+
+@font-face {
+    font-family: 'RogueCorner';
+    src: url(fonts\RogueCorner.ttf) format('ttf');
+}
+
+
+h2 {
+    font-family: 'Kingvoon', serif;
+    font-size: 60px;
+    color: rgb(87, 77, 65);
+}
+
+h3 { 
+    font-family: 'RogueCorner', serif;
+}
+
+h1 {
+    font-family: 'Kingvoon', serif;
+    color: rgb(85, 69, 50);
+}
+
+.act-btn {
+    background-color: rgb(219, 194, 165);
+    border-radius: 35px;
+}
+
+.chooser {
+    background-color: rgb(161, 151, 140);
+    
+}
