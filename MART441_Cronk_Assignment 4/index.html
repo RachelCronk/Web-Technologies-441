@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Own Adventure - Javascript Edition</title>
+    <link href="stylesheet.css" rel="stylesheet">
+    
+    <script defer src="script.js"></script>
+    <script>
+        // Initialize the story text
+        var storyText = "Start your journey";
+
+        // defining function
+
+        function whatToDo() {
+            var choice = document.getElementById("textbox1").value;
+
+            switch (choice) {
+                case "0":
+                    storyText = "This is a dream. You know that you’re asleep – you remember laying your head down, the darkness of the room enveloping you in a soft embrace. A sweet release from the troubles of the day. And yet… a new reality greets you. You can’t explain it—it feels like no dream you’ve ever had before. It’s too… real, too visceral. You blink, urging yourself to spirit away from this place, but here you are… and here you remain.You stand in a wasteland, colours of gold and rust sweeping out into rocky towers and glittering dunes. You can feel the cold, feel the deep chill that soaks into your muscles and strains against your joints. The wind is strong, kicking up dust around your feet, deep wells of sand forming around your ankles. In the sky hangs a blacked-out sun, a fiery, red gradient pulsing from behind the eclipse, casting the ground beneath it in an eerie, half-glow. Beyond the deep, mournful howl of the wind, you hear nothing else. You see nothing else of interest…";
+                    break;
+                case "1":
+                    storyText = "You choose to follow the sun – it’s the only object of note. Something tells you that forward, there lies answers. Maybe even a way out of this hellscape, and back to the comfort and warmth of your bed. A minute turns to several, and still, nothing—nothing of note, nothing new; you begin to feel the sweat of nervousness, the balking of your mind as you refuse to accept that you are, in fact, here. Minutes turn to hours… and you notice that the eclipse, which should have dissipated by now, remains, a steadfast herald of whatever mystery you’ve found yourself enthralled to. When you begin to lose hope, to feel yourself break down against the pressures of a reality that mystifies you, a small glimmer of hope flickers in the horizon – a light. A small, glowing light—like a campfire. A sign of habitation – a sign you are not alone.";
+                    break;
+                case "2":
+                    storyText = "You choose to walk away from the sun. The mercy of a deep and peaceful sleep – you long for it. You hope that your choice will ferry you back, snap you awake. An hour – no, two… nothing. There is nothing. You muster the courage to press forward, the courage to find more nothing. And your efforts are rewarded. A massive, looming structure breaks through the half light of the strange world, a shadowy colossus that beckons you forward.";
+                    break;
+                   
+                case "3":
+                    storyText = "You walk towards the fire, pushing forward, and soon the soft glow of the fire changes from a tiny dot on the horizon into a bonfire, massive and crackling. You see there a woman, gaunt, with ashen grey skin. She shambles, dragging her feet, and her face is contorted into the permanent fixture of a long, gaping scream -- but no sound comes. She turns to look at you, a hand coming up to her throat and holding it, as if she urges her long-forgotten voice outward to greet you.";
+                    break;
+                case "4":
+                    storyText = "You turn away from the fire, and walk away. The wastes sprawl out before you. You travel for hours, your thirst growing urgent, your throat aching and your skin itching with the dry pelting of sand. You continue on until your legs give out -- you can go no further. You are trapped here, in these wastes. You yourself are now wasting away...";
+                    break;
+                case "5":
+                    storyText = "You turn on your heel, running as fast as you can -- you stumble, a spray of sand cascading into your eyes. You are blind, but you can still hear: and you hear her coming. Your last moments are of darkness, and the rising tide of fear within your chest that is soon quelled with a decisive, sharp blow to your head.";
+                    break;
+                case "6":
+                    storyText = "You wait to see if any words can rattle outward from her withered husk of a body. She gulps silently, blind eyes staring straight into your soul. Then you hear it: a small, papery voice. 'I...was you...many years ago ... and now...we are together again.' You open your mouth to scream, pulling your hands up to your face in fear, but you see it then -- your hands, leathery, old and withered. And your voice does not come. Your eyes glaze over, and sight leaves you, leaves you alone in this desolate place. A dry rattle of laughter comes from the woman, the other you. 'Now we're together again... whole.'";
+                    break;
+                case "7":
+                    storyText = "You walk towards the structure, a looming beacon of your renewed hope... but as you approach, you can see bodies hanging from beams, skeletons scattered across the entrance of the strange, haphazard tower. On the bricks of the building, blood splatters, like paint. The smell of iron and rot fills your nostrils, and you balk away.";
+                    break;
+                case "8":
+                    storyText = "You walk away from the structure. The wastes sprawl out before you. You travel for hours, your thirst growing urgent, your throat aching and your skin itching with the dry pelting of sand. You continue on until your legs give out -- you can go no further. You are trapped here, in these wastes. You yourself are now wasting away.";
+                case "9":
+                    storyText = "You approach the entrance of the structure. You pause, just outside the darkness that drips from the doorway. From inside you think you hear... laughter. And... mewling. Like a young baby cooing, or a kitten hungry for food. The hairs on your neck stand up, and you instinctively take a step backwards. A hand shoots out from the darkness, and a voice undulates in warbling tones of tinny highs and growling, demonic lows. 'I've been so lonely... I've been so thin... I've been aching to meet you, my twin.' With a gasp, you are pulled within, the singsong whisper lulling you into surrender. You feel a lance of pain travel from collarbone to navel, and the last things you here are the singsong melody, and the wet squelching of your innards.";
+                    break;
+                case "10":
+                    storyText = "You turn on your heel, running as fast as you can -- you stumble, a spray of sand cascading into your eyes. You are blind, but you can still hear: and you hear her coming. Your last moments are of darkness, and the rising tide of fear within your chest that is soon quelled with a decisive, sharp blow to your head.";
+                    break;
+                case "11":
+                    storyText = "You wait to see if any words can rattle outward from her withered husk of a body. She gulps silently, blind eyes staring straight into your soul. Then you hear it: a small, papery voice. 'I...was you...many years ago ... and now...we are together again.' You open your mouth to scream, pulling your hands up to your face in fear, but you see it then -- your hands, leathery, old and withered. And your voice does not come. Your eyes glaze over, and sight leaves you, leaves you alone in this desolate place. A dry rattle of laughter comes from the woman, the other you. 'Now we're together again... whole.'";
+                    break;
+                case "12":
+                    storyText = "You wait to see if any words can rattle outward from her withered husk of a body. She gulps silently, blind eyes staring straight into your soul. Then you hear it: a small, papery voice. 'I...was you...many years ago ... and now...we are together again.' You open your mouth to scream, pulling your hands up to your face in fear, but you see it then -- your hands, leathery, old and withered. And your voice does not come. Your eyes glaze over, and sight leaves you, leaves you alone in this desolate place. A dry rattle of laughter comes from the woman, the other you. 'Now we're together again... whole.'";
+                    break;
+                default:
+                    storyText = "Invalid choice. Please choose again.";
+            }
+
+            var choiceText;
+            switch (choice) {
+                case "0":
+                    choiceText = "Hit 1 to Walk towards the sun and 2 to Walk away from the sun.";
+                    break;
+                    //These are all the choice A options
+                case "1":
+                    choiceText = "Hit 3 to Walk towards the fire. Hit 4 to walk away -- you don’t trust it – could be anything. Anyone. You walk to your right.";
+                    break;
+                case "2":
+                    choiceText = "Hit 7 to walk towards the structure, Hit 8 if you don’t trust it – could be anything. Anyone. You walk to your right.";
+                    break;
+                case "3":
+                    choiceText = "hit 5 to Run--nothing good can come from this. Hit 6 to Wait for her to speak.";
+                    break;
+                case "4":
+                    choiceText = "You have died--this is the end. To restart, hit 0.";
+                    break;
+                case "5":
+                    choiceText = "You have died--this is the end. To restart, hit 0.";
+                    break;
+                case "6":
+                    choiceText = "You have died--this is the end. To restart, hit 0.";
+                    break;
+
+                    //these are all the choice B options.
+                case "7":
+                    choiceText = "Hit 9 to Go inside, or hit 10 to leave - there's definitely nothing good here.";
+                    break;
+                case "8":
+                    choiceText = "You have died--this is the end. To restart, hit 0.";
+                    break;
+                case "9":
+                    choiceText = "You have died--this is the end. To restart, hit 0.";
+                    break;
+                case "10":
+                    choiceText = "You have died--this is the end. To restart, hit 0.";
+                    break;
+                case "11":
+                    choiceText = "";
+                    break;
+                case "12":
+                    choiceText = "";
+                    break;
+                default:
+                    choiceText = "Invalid choice. Please choose again.";
+            }
+
+
+var colorText = document.getElementById("title");
+//change colour title
+    switch (choice) {
+        case "0":
+        colorText.style.color = 'rgb(182, 144, 105)';
+        break;
+    case "1":
+        colorText.style.color = 'rgb(165, 112, 63)';
+        break;
+    case "2":
+        colorText.style.color = 'rgb(194, 109, 84)';
+        break;
+    case "3":
+        colorText.style.color = 'rgb(204, 149, 47)';
+        break;
+    case "4":
+        colorText.style.color = 'rgb(117, 32, 6)';
+        break;
+    case "5":
+        colorText.style.color = 'red';
+        break;
+    case "6":
+        colorText.style.color = 'red';
+        break;
+    case "7":
+        colorText.style.color = 'rgb(114, 33, 8)';
+        break;
+    case "8":
+        colorText.style.color = 'red';
+        break;
+    case "9":
+        colorText.style.color = 'red';
+        break;
+    case "10":
+        colorText.style.color = 'rgb(80, 6, 6)';
+        break;
+
+        default:
+        colorText.style.color = 'black'; // Default color if the choice is not 1-10
+}
+
+
+            document.getElementById("storyText").innerHTML = storyText;
+            document.getElementById("choice").innerHTML = choiceText;
+            clearTextBox(); // Call the function to clear the text box
+        }
+
+        function clearTextBox() {
+            document.getElementById("textbox1").value = "";
+        }
+        function loopText()
+            {
+                for(var i = 0; i < 5; i++)
+                {
+                    document.write("You need to wake up.");
+                }
+            }
+
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2 id="title">The Wastes - A Perpetual Nightmare</h2>
+
+        <h3 id="storyText"> Hit 0 to start.</h3>
+
+        <br><h3 id="choice">Start your journey</h3>
+
+        <input type="text" id="textbox1"> <button class="act-btn" onclick="whatToDo(); changeTextColor(document.getElementById('textbox1').value);">Act</button>
+<BR><BR><BR><script>
+            loopText(); // calling the function
+</script>
+
+    </div>
+
+</body>
+
+</html>

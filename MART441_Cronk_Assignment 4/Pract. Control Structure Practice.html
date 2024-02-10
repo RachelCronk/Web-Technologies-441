@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Own Adventure - Javascript Edition</title>
+    <link href="stylesheet.css" rel="stylesheet">
+    <script defer src="script.js"></script>
+    <script>
+       
+            // defining function
+            function whatToDo(Choice)
+            {
+                switch(Choice)
+                {
+                    case 1:
+                        document.write("This is choice 1.");
+                        break;
+                    case 2:
+                        document.write("This is choice 2.");
+                        break;
+                    case 3:
+                        document.write("This is choice 3.");
+                        break;
+                    case 4:
+                        document.write("this is choice 4.");
+                        break;
+                }
+            
+            }
+        
+    </script>
+</head>
+<body>
+    <script>
+        // Variable choice value
+        var Choice = 1;
+
+        whatToDo(Choice); // calling the function
+    </script>
+</body>
+</html>
