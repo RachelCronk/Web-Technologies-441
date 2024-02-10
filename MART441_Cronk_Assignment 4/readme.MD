@@ -1,7 +1,0 @@
-So this week was really challenging for me -- I feel like I grasped most of the concepts (with difficulty), but in the end I needed some help from tutorials to see how it worked. Once I completed the tutorials, I went through with comments to show my understanding of what the code was doing, since I believe that's the most important thing about learning from tutorials is understanding what is happening behind the scenes. I may not have grasped everything, but I think I have a rudimentary understanding of how it works. 
-
-I also utilized ChatGPT to build a similar code in javascript and html, and looked at its results. I have to admit, I really like that ChatGPT commented out what was happening in its code -- it differed from what I made with a tutorial, and was actually a little more complicated in the way it handled choices. But I feel like I learned a lot by looking at how it approached the concept in comparison with how my tutorials approached it.
-
-I had fun coming up with the nightmare scenarios in my story -- that was the enjoyable part for me, the creative bits. I had some difficulty getting two fonts to work, not sure what was going on there. In the end, I used new fonts to change the text. I think it has something to do with the h3 class that styles the actual story text -- I tried a few things, but in the end couldn't get the font to change.
-
-I've linked chatGPT's version at the bottom of the page. 
