@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Own Adventure - Javascript Edition</title>
+    <link href="stylesheet.css" rel="stylesheet">
+    <script defer src="script.js"></script>
+    <script>
+        // variable of choice value
+        //var Choice = 1;
+        // function to decide what to do with that value
+        function whatToDo(Choice1, Choice2)
+        {
+            if(Choice1 > 2 && Choice2 > 4)
+            {
+                document.write("choice 1");
+            }
+            else
+            {
+                document.write("choice 2");
+            }
+        }
+    </script>
+</head>
+<body>
+    <script>
+        var Choice1 = 3
+        var Choice2 = 5
+        whatToDo(Choice1, Choice2); // remember I am calling my method here
+    </script>
+</body>
+</html>
