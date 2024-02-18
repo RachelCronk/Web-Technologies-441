@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square Game</title>
+    <link href="stylesheet.css" rel="stylesheet">
+   
+    <!-- need to use the script tag to reference the script.js file-->
+    <script src="script.js"></script>
+
+</head>
+
+<body onload="printBlanks();">
+    <div>
+        <div class="container">
+            <h1>Square Up</h1>
+            <h2>A Memory Matching Game</h2>
+
+            <div class="boxcontainer">
+                Match a square to another square to win!<BR><BR><BR><BR>
+                <div class="divHolder">
+                    <div class="divMainBody">
+                        <div class="divHolderGrid">
+                            <div class="divGridCell"><img src="Images\1.png" id="img1" width="250" height="200"
+                                    onclick="flipImage(0);"></div>
+                            <div class="divGridCell"><img src="Images\2.png" id="img2" width="250" height="200"
+                                    onclick="flipImage(1);"></div>
+                        </div>
+                        <div class="divHolderGrid">
+                            <div class="divGridCell"><img src="Images\3.png" id="img3" width="250" height="200"
+                                    onclick="flipImage(2);"></div>
+                            <div class="divGridCell"><img src="Images\4.png" id="img4" width="250" height="200"
+                                    onclick="flipImage(3);"></div>
+                        </div>
+                        <div class="divHolderGrid">
+                            <div class="divGridCell"><img src="Images\5.png" id="img5" width="250" height="200"
+                                    onclick="flipImage(4);"></div>
+                            <div class="divGridCell"><img src="Images\6.png" id="img6" width="250" height="200"
+                                    onclick="flipImage(5);"></div>
+                        </div>
+                        <div class="divHolderGrid">
+                            <div class="divGridCell"><img src="Images\7.png" id="img7" width="250" height="200"
+                                    onclick="flipImage(6);"></div>
+                            <div class="divGridCell"><img src="Images\8.png" id="img8" width="250" height="200"
+                                    onclick="flipImage(7);"></div>
+                        </div>
+                        <div class="divHolderGrid">
+                            <div class="divGridCell"><img src="Images\9.png" id="img9" width="250" height="200"
+                                    onclick="flipImage(8);"></div>
+                            <div class="divGridCell"><img src="Images\10.png" id="img10" width="250" height="200"
+                                    onclick="flipImage(9);"></div>
+                        </div>
+                        <div class="divHolderGrid">
+                            <div class="divGridCell"><img src="Images\11.png" id="img11" width="250" height="200"
+                                    onclick="flipImage(10);"></div>
+                            <div class="divGridCell"><img src="Images\12.png" id="img12" width="250" height="200"
+                                    onclick="flipImage(11);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown
+            fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the
+            lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The
+            quick brown fox jumps over the lazy dog.
+        </div>
+        <BR><BR>
+
+
+
+        <BR><BR>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>
+            Cookies
+        </title>
+        <script>
+            function sendInformation()
+            {
+                var information = document.getElementById("info").value;
+                document.cookie = "information=" + information;
+                window.location="prac4.html";
+            }
+        </script>
+    </head>
+    <body>
+           <input type="text" id="info">
+           <button id="btnSubmit" onclick="sendInformation();">Submit</button>  
+    </body>
+</html>
