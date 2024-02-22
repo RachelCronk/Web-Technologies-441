@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>
+            Array Function Add
+        </title>
+        <script>
+            function differentInformation()
+            {
+                var information = new Array();
+                information.push(setInformation());
+
+                information[0];
+            }
+            
+            function setInformation()
+            {
+                document.getElementById("info").innerHTML = "This is text that is changed through calling a function from an array.";
+            }
+        </script>
+    </head>
+    <body onload="differentInformation();">
+        <div id="info"></div>
+        <br>
+    </body>
+</html>

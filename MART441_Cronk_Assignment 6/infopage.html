@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square Game</title>
+    <link href="stylesheet.css" rel="stylesheet">
+</head>
+
+<body onload="get();">
+    <div class="container">
+        <h3>Enter Info</h3>
+
+        <form>
+            <div>
+                First Name:
+                <label for="firstName"></label><br>
+                <input type="text" name="First Name" id="firstName"><br>
+
+                Last Name:
+                <label for="lastName"></label><br>
+                <input type="text" name="Last Name" id="lastName"><br>
+
+                Age:
+                <label for="age"></label><br>
+                <input type="text" name="Age" id="age">
+            </div>
+        </form>
+
+        <p id="savedText"></p>
+        <p id="openedText"></p>
+
+        <button id="btnSubmit" onclick="goNextPage(), save();">Save Info and Go to Next Page</button>
+
+        <script>
+            function goNextPage() {
+                window.location = "index.html";
+            }
+
+            function save() {
+                var Item1 = document.getElementById("firstName").value;
+                var Item2 = document.getElementById("lastName").value;
+                var Item3 = document.getElementById("age").value;
+
+                var information = {
+                    firstName: Item1,
+                    lastName: Item2,
+                    age: Item3
+                };
+
+                localStorage.setItem("storedItem", JSON.stringify(information));
+                document.getElementById("savedText").innerHTML = Item1 + Item2 + Item3 + " SAVED";
+            }
+
+            function get() {
+                var storedItem = localStorage.getItem("storedItem");
+                if (storedItem) {
+                    var information = JSON.parse(storedItem);
+                    document.getElementById("openedText").innerHTML = information.firstName + " " + information.lastName + " " + information.age + " OPENED";
+                }
+            }
+        </script>
+    </div>
+</body>
+
+</html>
