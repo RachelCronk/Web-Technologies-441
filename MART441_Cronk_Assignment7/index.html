@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viewer</title>
+    <link href="stylesheet.css" rel="stylesheet">
+    <script src="javascript.js"></script>
+</head>
+
+<body onload="initializeArray(); setInitialImage();">
+    <div class="container">
+        <h1>Viewfinder - A lens to Social Justice</h1>
+        <h3 id="title">Viewfinder Descriptions </h3>
+        <h2>
+        <img id="image" alt="ViewFinder Image" src="images/Startimage.png"></h2>
+        <button onclick="accessInformation()">Show Random ViewFinder</button>
+
+        <h2>A lens for social justice.</h2>
+
+<script>
+    function setInitialImage() {
+    // Set the initial image source
+    document.getElementById("image").src = "images/Startimage.png";
+}
+</script>
+
+    </div>
+</body>
+
+</html>

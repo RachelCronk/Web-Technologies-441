@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+    
+    
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("images/background/04.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    background-color: rgb(41, 74, 90);
+    font-family: 'MerchantLedgerRough.ttf', serif;
+    
+}
+
+.container {
+    width: 800px;
+    max-width: 80%;
+    background-color: rgb(173, 196, 192);
+    padding: 10px;
+    border-radius: 25px;
+    box-shadow: 0 0 10px 2px;
+}
+
+#image {
+    max-width: 100%; /* Make the image responsive */
+    height: auto; /* Maintain the aspect ratio */
+}
+
+@font-face {
+    font-family: 'BebasNeueBook';
+    src: url(fonts/Bebas\ Neue\ Book.ttf);
+}
+
+@font-face {
+    font-family: 'Beconder';
+    src: url(fonts/BECONDER.ttf);
+}
+
+@font-face {
+    font-family: 'MerchantLedger';
+    src: url(fonts/MerchantLedger-Rough.ttf);
+}
+
+
+
+h2 {
+    font-family: 'BebasNeueBook', serif;
+    font-size: 45px;
+    color: rgb(167, 4, 4);
+}
+
+h3 { 
+    font-family: 'MerchantLedger', serif;
+    font-size: 18px;
+}
+
+h1 {
+    font-family: 'Beconder', serif;
+    color: rgb(10, 27, 48);
+    font-size: 90px;
+}
+
+.act-btn {
+    background-color: rgb(240, 15, 15);
+    border-radius: 35px;
+}
+
+ /* Add your additional CSS styles here */
+ #title {
+    transition: color 0.5s ease-in-out; /* Add transition for a smooth color change */
+}
+
+
