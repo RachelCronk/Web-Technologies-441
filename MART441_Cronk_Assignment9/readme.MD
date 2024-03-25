@@ -1,0 +1,7 @@
+For this site, I struggled a little bit in connecting the JSON and Jquery, so I used chatGPT to help me figure that out. 
+
+To make the data feel smoothe and to display it in a fun way, I added a fade in -- but beyond that, I also added some moving elements such as a line and money symbols raining down to further accentuate the concept of presenting the information in a neat way. This was mostly done with css and javascript/jQuery! I also went in and styled the scrollbar and load data button to give it an extra custom feel. The fonts were chosen to give a fun feeling to the page as well!
+
+ChatGPT was exceptionally helpful in understanding how to animate, and how to do what I wanted -- the horizontal scrolling line in the background was a combo of chatGPT and my ideas! I wouldn't have known you could create an effect like that had I not used chatGPT. Also, I feel that chatGPT simplified the json to jquery bridge for me, and made it easily digestible. I had one of those "Ah, I get it!" moments! It was also helpful in displaying the dataset as a table!
+
+All in all this was a fun page to combine all of my learned ideas and past projects into a page that is more fun than any of the previous!

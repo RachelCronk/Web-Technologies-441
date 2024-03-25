@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musing</title>
+    <link href="stylesheet.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 
+</head>
+<body>
+    <div class="top">
+        <h1>Conversion Rates of</h1>
+    </div>
+    <div class="Container1">
+        <div id="moneyRainContainer"></div>
+    
+        <div class="horizontal-line">
+            <h2 class="animated-text">C U R R E N C Y</h2>
+            <div class="line"></div>
+        </div>
+        Here is the current currency exchange rates.
+        <button id="loadDataBtn">Load Data</button>
+        <div id="jsonDataContainer"></div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('.animated-text').animateTextColor(); 
+
+           
+            function createDollar() {
+                var newDollar = $('<div class="dollar">$</div>');
+                var startPositionX = Math.random() * $(window).width(); 
+                var duration = Math.random() * 3000 + 2000; 
+
+                
+                newDollar.css({
+                    left: startPositionX,
+                    top: -20 
+                });
+
+                
+                $('#moneyRainContainer').append(newDollar);
+                newDollar.animate({
+                    top: $(window).height() + 20 
+                }, duration, 'linear', function() {
+                    
+                    $(this).remove();
+                });
+            }
+
+          
+            setInterval(function() {
+                createDollar();
+            }, 200);
+
+            $('#loadDataBtn').click(function() {
+                $.ajax({
+                    url: 'dataset.json',
+                    dataType: 'json',
+                    success: function(data) {
+                        
+                        $('#jsonDataContainer').empty();
+
+                        
+                        var tableHtml = '<table style="display: none;">';
+                        $.each(data, function(key, value) {
+                            if (typeof value === 'object') {
+                                tableHtml += '<tr><td>' + key + '</td><td>';
+                                $.each(value, function(innerKey, innerValue) {
+                                    tableHtml += innerKey + ': ' + innerValue + '<br>';
+                                });
+                                tableHtml += '</td></tr>';
+                            } else {
+                                tableHtml += '<tr><td>' + key + '</td><td>' + value + '</td></tr>';
+                            }
+                        });
+                        tableHtml += '</table>';
+                        
+                        
+                        $('#jsonDataContainer').html(tableHtml).find('table').fadeIn('slow');
+                    },
+                    error: function(xhr, status, error) {
+                        
+                        console.error(status + ': ' + error);
+                    }
+                });
+            });
+        });
+
+        (function($) {
+            $.fn.animateTextColor = function() {
+                var colors = ['rgb(195, 216, 121)', 'rgb(165, 192, 0)', 'rgb(30, 218, 93)'];
+                var index = 0; 
+                var element = this;
+
+                
+                function animate() {
+                    element.animate({ color: colors[index] }, {
+                        duration: 1000,
+                        step: function(now, fx) {
+                            $(this).css('color', colors[index]);
+                        },
+                        complete: function() {
+                            index = (index + 1) % colors.length; 
+                            animate(); 
+                        }
+                    });
+                }
+
+                animate(); 
+            };
+        })(jQuery);
+    </script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+body {
+    font-family: 'MoonchildReg1', serif;
+    font-size: 28px;
+    background-color: rgb(114, 168, 121);
+    overflow: hidden; /* Ensures that animation overflow is hidden */
+    position: relative; /* Necessary for positioning pseudo-elements */
+}
+
+/* Pseudo-element to create the fading vertical lines */
+body::before {
+    content: "";
+    position: absolute;
+    top: -1000px; /* Extend the lines above the page */
+    left: 0;
+    width: 100%;
+    height: 2000px; /* Extend the lines below the page */
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(254, 255, 204), rgba(255, 255, 255, 0));
+    animation: movingLines 9s linear infinite; /* Adjust animation duration as needed */
+    z-index: -1; /* Ensure the lines are rendered behind other content */
+}
+
+
+@keyframes movingLines {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+    .horizontal-line {
+        position: relative;
+        overflow: hidden;
+        
+    }
+
+    .line {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 2px; 
+        background-color: rgb(2, 134, 134); 
+        animation: moveLine 5s linear infinite;
+        box-shadow: 0 0 20px 2px rgba(189, 255, 8, 0.5);
+    }
+
+    
+    @keyframes moveLine {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(100%);
+        }
+    }
+    
+      
+      .dollar {
+        position: absolute;
+        color: green;
+        font-size: 10px;
+        box-shadow: 0 0 20px 2px rgba(189, 255, 8, 0.5);
+    }
+
+h1 {
+    font-family: 'Abegnale', serif;
+    font-size: 100px;
+    text-align: center;
+    color: rgb(17, 83, 95);
+
+}
+
+h2 {
+    font-family: 'MoonchildReg';
+    text-align: center;
+    font-size: 80px;
+    font-weight: 400;
+    color: bisque;
+}
+
+
+.Container1 {
+    background-image: linear-gradient(rgba(6, 110, 117, 0.90), rgba(205, 253, 177, 0.9)), url(images/05_Vintage\ BG.jpg);
+    background-size: cover;
+    width: 80%; /* Set the width as needed */
+    max-width: 1000px; /* Set a maximum width if desired */
+    height: 400px; /* Set a fixed height */
+    margin: 0 auto; 
+    padding: 20px; /* Adjust padding as needed */
+    border-radius: 50px;
+    box-shadow: 0 0 50px 2px rgba(255, 218, 138, 0.5);;
+    overflow: auto; /* Enable scrolling */
+}
+.top {
+    width: 400px;
+    height: flex;
+    margin: 0 auto;
+}
+
+@font-face {
+    font-family: 'MoonchildReg1';
+    src: url(fonts/Moonchild-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'MoonchildReg';
+    src: url(fonts/MoonchildScript-Regular.otf);
+}
+
+@font-face {
+    font-family: 'Abegnale';
+    src: url(fonts/Abegnale-Free\ Version.ttf);
+}
+
+.jsonDataContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: auto;
+    padding: 20px;
+}
+
+#loadDataBtn {
+    color: rgb(2, 104, 95);
+    font-family: "Abegnale", serif;
+    font-size: 20px;
+    background-color: rgb(195, 216, 121);
+    box-shadow: 0 0 20px 2px rgba(189, 255, 8, 0.5);
+    border-radius: 20%;
+    padding: 12px;
+    border-color: rgb(247, 243, 27);
+    display: block;
+    margin: 0 auto; 
+}
+
+
+::-webkit-scrollbar {
+    width: 10px; 
+    border-radius: 40%;
+}
+
+::-webkit-scrollbar-track {
+    background: #cddd72; 
+    border-radius: 40%;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #005457; 
+    border-radius: 6px; 
+    box-shadow: 0 0 20px 2px rgba(189, 255, 8, 0.5);;
+    border-radius: 40%;
+    
+}
