@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musing</title>
+    <link href="stylesheet.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="javascript.js"></script>
+</head>
+<body>
+    <h1>Collide</h1>
+    <h2>A moving shapes game.</h2>
+
+    <div class="container1">
+        <audio id="song" src="audio/Dreams.mp3" controls></audio><p></p>
+        <button onclick="updateAudio();">Change Audio</button>
+        <h3>Press WASD to move.</h3>
+        this is a game where you can move shapes.
+        <br><br><br><br>
+
+        <canvas id="gameCanvas" height="300" width="300">
+            put game here
+        </canvas>
+        <br><br><br><br>
+    </div>
+
+    <script>
+        class Square {
+            constructor(x, y, width, height, color) {
+                this.x = x;
+                this.y = y;
+                this.width = width;
+                this.height = height;
+                this.color = color;
+                this.originalWidth = width; // Store original width for restoration
+                this.originalHeight = height; // Store original height for restoration
+            }
+
+            draw(ctx) {
+                ctx.fillStyle = this.color;
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+            }
+
+            moveUp(step) {
+                this.y -= step;
+                this.y = Math.max(0, this.y); // Ensure square stays within canvas
+            }
+
+            moveDown(step) {
+                this.y += step;
+                this.y = Math.min(canvas.height - this.height, this.y); // Ensure square stays within canvas
+            }
+
+            moveRight(step) {
+                this.x += step;
+                this.x = Math.min(canvas.width - this.width, this.x); // Ensure square stays within canvas
+            }
+
+            moveLeft(step) {
+                this.x -= step;
+                this.x = Math.max(0, this.x); // Ensure square stays within canvas
+            }
+
+            collidesWith(otherSquare) {
+                return !(
+                    ((this.y + this.height) < otherSquare.y) ||
+                    (this.y > (otherSquare.y + otherSquare.height)) ||
+                    ((this.x + this.width) < otherSquare.x) ||
+                    (this.x > (otherSquare.x + otherSquare.width))
+                );
+            }
+
+            // Function to temporarily decrease size upon collision
+            shrink() {
+                this.width = this.height = Math.max(1, this.width - 5); // Decrease width and height
+            }
+
+            // Function to restore original size after a brief delay
+            restoreSize() {
+                setTimeout(() => {
+                    this.width = this.originalWidth;
+                    this.height = this.originalHeight;
+                }, 300); // Adjust the delay as needed
+            }
+        }
+
+        function updateAudio() {
+            var audio = document.getElementById("song");
+            var newSrc = "audio/Cinematic.mp3";
+            audio.setAttribute("src", newSrc);
+            audio.play(); 
+        }
+
+        var canvas = document.getElementById("gameCanvas");
+        var ctx = canvas.getContext("2d");
+        
+        var square1 = new Square(50, 50, 20, 20, "teal"); 
+
+        var square2 = new Square(100, 100, 20, 20, "rgb(65, 0, 38)"); 
+        var prevDirection = null; // Variable to store the previous direction of movement
+        var stepsRemaining = 0; // Variable to track remaining steps in current direction
+
+        setInterval(update, 1000/60);
+
+        function update() {
+            draw();
+            moveSquare2();
+            checkCollision(); // Check for collision after each move
+            console.log ('the update function is working');
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); 
+            console.log ('the draw is working');
+            square1.draw(ctx); 
+            square2.draw(ctx); 
+        }
+
+        $(document).ready(function(){
+            $(this).keypress(function(event){
+                getKey(event);
+            });
+        });
+
+        function getKey(event)
+        {
+            var char = event.which || event.keyCode;
+            var actualLetter = String.fromCharCode(char);
+            if(actualLetter == "w")
+            {
+                square1.moveUp(10);
+            }
+            if(actualLetter == "s")
+            {
+                square1.moveDown(10);
+            }
+            if(actualLetter == "a")
+            {
+                square1.moveLeft(10);
+            }
+            if(actualLetter == "d")
+            {
+                square1.moveRight(10);
+            }
+        }
+
+        function moveSquare2() {
+            if (stepsRemaining <= 0) {
+                // If there are no steps remaining, pick a new direction and number of steps
+                var direction = Math.floor(Math.random() * 4); // 0: up, 1: down, 2: left, 3: right
+                stepsRemaining = Math.floor(Math.random() * 50) + 2; // Random number of steps between 5 and 25
+                switch (direction) {
+                    case 0:
+                        square2.moveUp(5);
+                        break;
+                    case 1:
+                        square2.moveDown(5);
+                        break;
+                    case 2:
+                        square2.moveLeft(5);
+                        break;
+                    case 3:
+                        square2.moveRight(5);
+                        break;
+                    default:
+                        break;
+                }
+            } else {
+                // If there are steps remaining, continue moving in the same direction
+                switch (prevDirection) {
+                    case 0:
+                        square2.moveUp(2);
+                        break;
+                    case 1:
+                        square2.moveDown(2);
+                        break;
+                    case 2:
+                        square2.moveLeft(2);
+                        break;
+                    case 3:
+                        square2.moveRight(2);
+                        break;
+                    default:
+                        break;
+                }
+                stepsRemaining--;
+            }
+        }
+
+        function checkCollision() {
+            if (square1.collidesWith(square2)) {
+                // If there is a collision, move square1 back to its previous position
+                square1.x = square1.previousX;
+                square1.y = square1.previousY;
+                flashBackground(); // Trigger the background color flash
+                square1.shrink(); // Shrink square1 temporarily
+                square1.restoreSize(); // Restore square1 size after a delay
+                square2.shrink(); // Shrink square2 temporarily
+                square2.restoreSize(); // Restore square2 size after a delay
+            } else {
+                // If no collision, update previous position
+                square1.previousX = square1.x;
+                square1.previousY = square1.y;
+            }
+        }
+
+
+        //ChatGPT code to change backrgound colour on collision 
+            function flashBackground() {
+            var duration = 500; // Duration of each phase (fade in and fade out) in milliseconds
+            var interval = 50; // Interval between color changes in milliseconds
+            var steps = duration / interval; // Number of steps to complete the animation
+            var initialRed = 255; // Initial red value for pale yellow
+            var initialGreen = 255; // Initial green value for pale yellow
+            var initialBlue = 153; // Initial blue value for pale yellow (corresponds to pale yellow)
+            var finalRed = 255; // Final red value for pink
+            var finalGreen = 192; // Final green value for pink
+            var finalBlue = 203; // Final blue value for pink (corresponds to pink)
+            var stepRed = (finalRed - initialRed) / steps; // Step change for red value
+            var stepGreen = (finalGreen - initialGreen) / steps; // Step change for green value
+            var stepBlue = (finalBlue - initialBlue) / steps; // Step change for blue value
+
+            var count = 0; // Counter to track animation steps
+
+            var intervalID = setInterval(function() {
+                // Calculate new color values for each step
+                var red = initialRed + stepRed * count;
+                var green = initialGreen + stepGreen * count;
+                var blue = initialBlue + stepBlue * count;
+
+                // Apply the new color to the canvas background
+                canvas.style.backgroundColor = `rgb(${Math.round(red)}, ${Math.round(green)}, ${Math.round(blue)})`;
+
+                count++; // Increment the step counter
+
+                // If all steps are completed, clear the interval and reset the background color to pink
+                if (count >= steps) {
+                    clearInterval(intervalID);
+                    canvas.style.backgroundColor = 'pink';
+                }
+            }, interval);
+        }
+    </script>
+</body>
+</html>
