@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musing</title>
+    <link href="stylesheet.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="javascript.js"></script>
+</head>
+<body>
+    <h1>Cointoss</h1>
+    <h2>Collectible Game.</h2>
+
+    <div class="container1">
+        Collect all the coins by pressing the WASD keys!<br><br>
+        <canvas id="gameCanvas" height="300" width="300"></canvas>
+        <div id="scoreDisplay">Score: <span id="score">0</span></div>
+        <audio id="coinSound" src="audio/Coin.wav"></audio>
+        <audio id="song" src="audio/8 Bit Music Cut 3.mp3" controls></audio><br>
+
+        <script>
+
+
+            class Square {
+                constructor(x, y, width, height, color) {
+                    this.x = x;
+                    this.y = y;
+                    this.width = width;
+                    this.height = height;
+                    this.color = color;
+                }
+    
+                draw(ctx) {
+                    ctx.fillStyle = this.color;
+                    ctx.fillRect(this.x, this.y, this.width, this.height);
+                }
+    
+                moveUp(step) {
+                    this.y -= step;
+                    this.y = Math.max(0, this.y); 
+                }
+    
+                moveDown(step) {
+                    this.y += step;
+                    this.y = Math.min(canvas.height - this.height, this.y); 
+                }
+    
+                moveRight(step) {
+                    this.x += step;
+                    this.x = Math.min(canvas.width - this.width, this.x); 
+                }
+    
+                moveLeft(step) {
+                    this.x -= step;
+                    this.x = Math.max(0, this.x); 
+                }
+    
+                collidesWith(otherSquare) {
+                    return !(
+                        ((this.y + this.height) < otherSquare.y) ||
+                        (this.y > (otherSquare.y + otherSquare.height)) ||
+                        ((this.x + this.width) < otherSquare.x) ||
+                        (this.x > (otherSquare.x + otherSquare.width))
+                    );
+                }
+            }
+    
+            function updateAudio() {
+                var audio = document.getElementById("song");
+                var newSrc = "audio/Cinematic.mp3";
+                audio.setAttribute("src", newSrc);
+                audio.play(); 
+            }
+    
+            var canvas = document.getElementById("gameCanvas");
+            var ctx = canvas.getContext("2d");
+            var score = 0; // Player's score
+            var scoreDisplay = document.getElementById("score");
+            
+            var square1 = new Square(0, 0, 50, 50, "teal"); // Main square
+
+            var squares = [
+                square1, // Main square
+                new Square(100, 100, 25, 25, "gold"), // coins
+                new Square(200, 100, 25, 25, "gold"), 
+                new Square(100, 200, 25, 25, "gold"), 
+                new Square(200, 200, 25, 25, "gold")  
+            ];
+
+            setInterval(update, 1000/60);
+    
+            function update() {
+                draw();
+                checkCollision();
+            }
+    
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                squares.forEach(function(square) {
+                    square.draw(ctx);
+                });
+                scoreDisplay.textContent = score; // Update score
+            }
+    
+            $(document).ready(function(){
+                $(this).keypress(function(event){
+                    getKey(event);
+                });
+            });
+    
+            function getKey(event)
+            {
+                var char = event.which || event.keyCode;
+                var actualLetter = String.fromCharCode(char);
+                if(actualLetter == "w")
+                {
+                    square1.moveUp(10);
+                }
+                if(actualLetter == "s")
+                {
+                    square1.moveDown(10);
+                }
+                if(actualLetter == "a")
+                {
+                    square1.moveLeft(10);
+                }
+                if(actualLetter == "d")
+                {
+                    square1.moveRight(10);
+                }
+            }
+
+            function checkCollision() {
+    squares.forEach(function(square, index) {
+        if (index === 0) 
+            return;
+
+        if (square1.collidesWith(square)) {
+            
+            if (square.color === "gold") {
+                squares.splice(index, 1); // Remove the gold square from array
+                score += 100; // Increase player's score
+                playCoinSound(); // Play the coin collection sound
+            }
+        }
+    });
+}
+
+
+
+function playCoinSound() {
+    var coinSound = document.getElementById("coinSound");
+    coinSound.play();
+
+}
+        </script>
+
+        <br><br><br><br>
+
+
+    </div>
+    </body>
+    </html>
