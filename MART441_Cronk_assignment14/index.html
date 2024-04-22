@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>My first three.js app</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <script src="js/three.min.js"></script>
+    <script src="js/OBJLoader.js"></script> <!-- Include OBJLoader.js -->
+    <script>
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, .1, 1000);
+        var renderer = new THREE.WebGLRenderer();
+        camera.position.set(0, 10, 100); // Adjusted camera position
+
+        renderer.setClearColor(0xdddddd);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        camera.lookAt(scene.position);
+        document.body.appendChild(renderer.domElement);
+
+        var fontLoaded = false;
+
+        // SETTINGS
+        var text = "aems",
+            height = 2,
+            size = 10,
+            curveSegments = 10,
+            bevelThickness = 1,
+            bevelSize = 0.3,
+            bevelSegments = 3,
+            bevelEnabled = true,
+            font = undefined;
+
+        var rotation = 0;
+
+        function spinCamera() {
+            rotation += 0.001;
+            camera.position.z = Math.sin(rotation) * 100;
+            camera.position.x = Math.cos(rotation) * 80;
+            camera.lookAt(scene.position);
+        }
+
+        function loadFont() {
+            var loader = new THREE.FontLoader();
+
+            loader.load('fonts/helvetiker_regular.typeface.json', function(res) {
+                font = res;
+                fontLoaded = true;
+                // Start rendering loop only after the font is loaded
+                render();
+            });
+        }
+
+        function createText() {
+            if (!fontLoaded) return;
+
+            // Change the text here
+            textGeo = new THREE.TextGeometry('Moving all the shapes!', {
+                font: font,
+                size: size,
+                height: height,
+                curveSegments: curveSegments,
+                weight: "normal",
+                bevelThickness: bevelThickness,
+                bevelSize: bevelSize,
+                bevelSegments: bevelSegments,
+                bevelEnabled: bevelEnabled
+            });
+            textGeo.computeBoundingBox();
+            textGeo.computeVertexNormals();
+
+            // Change the color here
+            var color = new THREE.Color(0xff0000);
+            var textMaterial = new THREE.MeshBasicMaterial({
+                color: color
+            });
+            var textMesh = new THREE.Mesh(textGeo, textMaterial);
+            textMesh.position.x = -textGeo.boundingBox.max.x / 2;
+            textMesh.castShadow = true;
+            scene.add(textMesh);
+        }
+
+        function loadModel() {
+    var loader = new THREE.OBJLoader();
+
+    loader.load(
+        'models/Skull.obj', // Path to your OBJ model file
+        function(object) {
+            object.position.set(0, 0, 0); // Adjust position as needed
+            object.scale.set(1, 1, 1); // Adjust scale as needed
+            scene.add(object);
+
+            // Rotate the skull
+            object.rotation.y += 0.01; // Adjust rotation speed
+        },
+        function(xhr) {
+            console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+        },
+        function(error) {
+            console.error('Error loading model:', error);
+        }
+    );
+}
+
+        // Function to create a circle
+        function createCircle() {
+            var geometry = new THREE.CircleGeometry(10, 32); // Radius of 10, 32 segments
+            var material = new THREE.MeshBasicMaterial({ color: 0xffff00 }); // Yellow color
+            var circle = new THREE.Mesh(geometry, material);
+            circle.position.set(25, -10, 0); // Adjust position to the right and down of the text
+            scene.add(circle);
+
+            // Rotate the circle at a faster speed than the text
+            circle.rotation.y += 0.02; // Adjust rotation speed
+        }
+
+        function render() {
+            requestAnimationFrame(render);
+
+            if (!fontLoaded) return; // Wait for font to be loaded
+            createText();
+            loadModel(); // Load model asynchronously
+            createCircle(); // Create circle
+            spinCamera();
+            renderer.render(scene, camera);
+        }
+
+        loadFont(); // Load font asynchronously
+    </script>
+</body>
+</html>
