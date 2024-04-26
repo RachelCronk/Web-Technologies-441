@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Babylon.js Example</title>
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+  <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+  <style>
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+    <a href="index.html">To Page One</a>
+  <canvas id="renderCanvas"></canvas>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var canvas = document.getElementById("renderCanvas");
+      var engine = new BABYLON.Engine(canvas, true);
+
+      function createScene() {
+        var scene = new BABYLON.Scene(engine);
+        var camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(0, 5, -10), scene);
+        camera.setTarget(BABYLON.Vector3.Zero());
+        camera.attachControl(canvas, true);
+
+        var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 3), scene);
+        light.intensity = 0.5;
+
+        var ground = BABYLON.MeshBuilder.CreateGround("ground", { width: 20, height: 20 }, scene);
+        ground.material = new BABYLON.StandardMaterial("groundMat", scene);
+        ground.material.diffuseColor = new BABYLON.Color3(0, 1, 0);
+
+        // Load chicken model
+        BABYLON.SceneLoader.ImportMesh("", "", "chicken.glb", scene, function (meshes) {
+          // Adjust position, scaling, or other properties of the loaded mesh here if needed
+          var chicken = meshes[0];
+          chicken.name = "Chicken"; // Set a name for easier reference
+          // Start with a random position
+          chicken.position = new BABYLON.Vector3(
+            Math.random() * 10 - 5, // X coordinate
+            0,                       // Y coordinate (ground level)
+            Math.random() * 10 - 5  // Z coordinate
+          );
+        });
+
+        return { scene, camera };
+      }
+
+      var { scene, camera } = createScene();
+
+      engine.runRenderLoop(function () {
+        scene.render();
+      });
+
+      window.addEventListener("resize", function () {
+        engine.resize();
+      });
+
+      // Listen for mouse movements
+      canvas.addEventListener("mousemove", function (event) {
+        var chicken = scene.getMeshByName("Chicken");
+        if (chicken) {
+          // Get the mouse coordinates relative to the canvas
+          var mouseX = event.clientX - canvas.getBoundingClientRect().left;
+          var mouseY = event.clientY - canvas.getBoundingClientRect().top;
+
+          // Convert mouse coordinates to world coordinates
+          var pickResult = scene.pick(mouseX, mouseY);
+          if (pickResult.hit) {
+            // Move the chicken to the position pointed by the mouse
+            chicken.position.copyFrom(pickResult.pickedPoint);
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
