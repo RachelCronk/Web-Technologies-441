@@ -6,72 +6,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Viewer</title>
     <link href="stylesheet.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="javascript.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <style>
-        /* Add styles for raindrops */
-        .raindrop {
-            position: absolute;
-            width: 2px;
-            height: 10px;
-            background-color: rgb(219, 219, 236);
-            border-radius: 50%;
-            pointer-events: none;
+        body {
+            /* Set initial background color */
+            background-color: #003e57; /* fallback for old browsers */
+            background-image: linear-gradient(to right, #4f6cb7, #c63e4d); /* Standard syntax (must be last) */
+            animation: changeBackground 10s linear infinite alternate; /* Animation to change the background */
+        }
+
+        @keyframes changeBackground {
+            0% {
+                background-image: linear-gradient(to right, #003457, #dd9207);
+            }
+
+            50% {
+                background-image: linear-gradient(to right, #ebcd7a, #002733);
+            }
+
+            100% {
+                background-image: linear-gradient(to right, #00253d, #f5bc71);
+            }
         }
     </style>
 </head>
 
 <body onload="initializeArray(); setInitialImage();">
+    <div class="line"></div>
+
     <div class="container">
-        <h1>A Day in The Life</h1>
-        <h3 id="title">Descriptions</h3>
-        <h2><img id="image" alt="ViewFinder Image" src="images/startimg.jpg"></h2>
+       
+       
+
+        <h1>A Day in The Life</h1><P></P><p></p><p></p>
+        <h3 id="title">Descriptions </h3>
+        
+        <h2>
+            <img id="image" alt="ViewFinder Image" src="images/startimg.jpg">
+        </h2>
         <button onclick="accessInformation()">Show Random Img</button>
         <h2>Oh, to be, to be, to be.</h2>
+        
+        <div class="container1">
+
+            <p>
+            </p>
+            <audio id="song" src="audio/Romantic.wav" controls></audio>
+            <p></p>
+            <button onclick="updateAudio();">Change Audio</button>
+            <P></P>
+
+        </div>
+
+        <script>
+            function setInitialImage() {
+                // Set the initial image source
+                document.getElementById("image").src = "images/Startimg.jpg";
+            }
+
+            function updateAudio() {
+                var audio = document.getElementById("song");
+                var newSrc = "audio/inspirational.wav";
+                audio.setAttribute("src", newSrc);
+                audio.play();
+            }
+        </script>
+
     </div>
-
-    <script>
-        function setInitialImage() {
-            // Set the initial image source
-            document.getElementById("image").src = "images/Startimg.jpg";
-
-            // Function to create a raindrop
-            function createRaindrop() {
-                // Create a div for the raindrop
-                var raindrop = $("<div class='raindrop'></div>");
-
-                // Set initial position and size
-                raindrop.css({
-                    "left": Math.random() * $(window).width(), // Random horizontal position
-                    "top": Math.random() * $(window).height(), // Random vertical position
-                    "animation-duration": Math.random() * 1.5 + 0.5 + "s", // Random falling speed
-                });
-
-                // Append the raindrop to the body
-                $("body").append(raindrop);
-
-                // Animation to make the raindrop fall
-                raindrop.animate({
-                    top: "100%", // Move to the bottom of the container
-                    opacity: 0 // Fade out
-                }, {
-                    duration: Math.random() * 4000 + 1000, // Random duration
-                    easing: "linear", // Linear animation
-                    complete: function () {
-                        // Remove the raindrop after it reaches the bottom
-                        $(this).remove();
-                        // Create a new raindrop
-                        createRaindrop();
-                    }
-                });
-            }
-
-            // Create initial raindrops
-            for (var i = 0; i < 50; i++) {
-                createRaindrop();
-            }
-        }
-    </script>
 </body>
 
 </html>

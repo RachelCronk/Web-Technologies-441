@@ -30,20 +30,20 @@ class ViewFinder {
 // array myViewFinderArray
 function initializeArray() {
     // create the objects from the class ViewFinder
-    var Viewfinder1 = new ViewFinder("", "images/img1.jpg");
-    var Viewfinder2 = new ViewFinder("", "images/img2.jpg");
-    var Viewfinder3 = new ViewFinder("", "images/img3.jpg");
-    var Viewfinder4 = new ViewFinder("", "images/img4jpg");
-    var Viewfinder5 = new ViewFinder("", "images/img5.jpg");
-    var Viewfinder6 = new ViewFinder("", "images/img6.jpg");
-    var Viewfinder7 = new ViewFinder("", "images/img7.jpg");
-    var Viewfinder8 = new ViewFinder("", "images/img8.jpg");
-    var Viewfinder9 = new ViewFinder("", "images/img9.jpg");
-    var Viewfinder10 = new ViewFinder("", "images/img10.jpg");
-    var Viewfinder11 = new ViewFinder("", "images/img11.jpg");
-    var Viewfinder12 = new ViewFinder("", "images/img12.jpg");
-    var Viewfinder13 = new ViewFinder("", "images/img13.jpg");
-    var Viewfinder14 = new ViewFinder("", "images/img14.jpg");
+    var Viewfinder1 = new ViewFinder("Watering Plants", "images/img1.jpg");
+    var Viewfinder2 = new ViewFinder("Light through the Door", "images/img2.jpg");
+    var Viewfinder3 = new ViewFinder("Apetizer", "images/img3.jpg");
+    var Viewfinder4 = new ViewFinder("Tulips in the Garden", "images/img4.jpg");
+    var Viewfinder5 = new ViewFinder("Mother's Dog", "images/img5.jpg");
+    var Viewfinder6 = new ViewFinder("Beebalm", "images/img6.jpg");
+    var Viewfinder7 = new ViewFinder("Baby Maple Leaves", "images/img7.jpg");
+    var Viewfinder8 = new ViewFinder("Long Distance & Affection", "images/img8.jpg");
+    var Viewfinder9 = new ViewFinder("Main Course", "images/img9.jpg");
+    var Viewfinder10 = new ViewFinder("Pink Boots IPA", "images/img10.jpg");
+    var Viewfinder11 = new ViewFinder("Mother", "images/img11.jpg");
+    var Viewfinder12 = new ViewFinder("Traintracks out of Town", "images/img12.jpg");
+    var Viewfinder13 = new ViewFinder("A New Day", "images/img13.jpg");
+    var Viewfinder14 = new ViewFinder("Sidewalk Clouds", "images/img14.jpg");
     
     // add the objects to the array
     ViewFinderArray.push(Viewfinder1);

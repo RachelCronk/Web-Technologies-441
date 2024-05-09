@@ -17,7 +17,7 @@ body {
 
 .container {
     width: 600px;
-    background-color: rgb(172, 118, 3);
+    background-color: rgb(216, 204, 177);
     padding: 10px;
     border-radius: 25px;
     box-shadow: 0 0 10px 2px;
@@ -27,12 +27,12 @@ body {
     flex-direction: column; /* Arrange children elements vertically */
     justify-content: center; /* Vertically center content */
     align-items: center; /* Horizontally center content */
-    overflow: auto; /* Add overflow property for scrollbar */
+    overflow: hidden; /* Hide any overflowing content */
 }
 
 
 #image {
-    max-width: 100%; /* Make the image responsive */
+    max-width: 70%; /* Make the image responsive */
     height: auto; /* Maintain the aspect ratio */
 }
 
@@ -67,6 +67,11 @@ h1 {
     font-family: 'anomalias';
     color: rgb(10, 39, 48);
     font-size: 50px;
+    position: absolute; /* Position the title relative to the container */
+    top: 20px; /* Adjust the top position as needed */
+    left: 50%; /* Center the title horizontally */
+    transform: translateX(-50%); /* Adjust the horizontal position to center the title */
+}
 }
 
 /* Add your additional CSS styles here */
